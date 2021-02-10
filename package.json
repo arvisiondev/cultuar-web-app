@@ -1,0 +1,19 @@
+{
+  "name": "cultuar-web-app",
+  "version": "1.0.0",
+  "description": "Repositorio para gestionar el visionado Web de modelos en AR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beebitsolutions/cultuar-web-app.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beebitsolutions/cultuar-web-app/issues"
+  },
+  "homepage": "https://github.com/beebitsolutions/cultuar-web-app#readme"
+}

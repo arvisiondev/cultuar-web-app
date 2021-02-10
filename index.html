@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-color: #fbfbfb;
+            width: 100%;
+            height: 100%;
+        }
+
+        .centered {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .centered model-viewer {
+            margin: auto;
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-8">
+                <h1 class="display-1">Visor de modelos</h1>
+                <div id="scriptText"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <script>
+        function htmlEncode(rawStr) {
+            return rawStr.replace(/[\u00A0-\u9999<>\&]/g, function (i) {
+                return '&#' + i.charCodeAt(0) + ';';
+            });
+        }
+        const route = "assets/3d/"
+        function createModelText(route, slug, name) {
+            let start = "<model-viewer ";
+            let src = 'src="' + route + slug + '.glb" ';
+            let iosSrc = 'ios-src="' + route + slug + '.glb" ';
+            let description = 'description="Modelo 3D de' + name + '" ';
+            let end = 'auto-rotate ar ar-modes="scene-viewer quick-look webxr" ar-scale="auto" camera-controls></model-viewer>';
+            return start + src + iosSrc + description + end;
+        }
+
+        let models = [
+            {
+                name: "Alhambra",
+                slug: "alhambra/alhambra-v.1.0"
+            },
+            {
+                name: "Atalaya Deifontes",
+                slug: "atalaya-deifontes/atalaya-deifontes-v.1.0"
+            },
+            {
+                name: "Castillo Aulencia",
+                slug: "castillo-aulencia/castillo-aulencia-v.1.0"
+            },
+            {
+                name: "Castillo Villalonso",
+                slug: "castillo-villalonso/castillo-villalonso-v.1.0"
+            }
+        ]
+
+        let domwrite = ""
+
+        models.forEach((model) => {
+            let visor = createModelText(route, model.slug, model.name)
+            let visorCode = htmlEncode(visor)
+            domwrite += `<h2>${model.name}</h2><code>${visorCode}</code> <hr><strong>Visor:</strong> ${visor}`
+        })
+
+        document.getElementById("scriptText").innerHTML = domwrite
+
+
+    </script>
+    <!-- Import the component -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
