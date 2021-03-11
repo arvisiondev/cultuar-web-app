@@ -63,7 +63,7 @@
         function createModelText(route, slug, name) {
             let start = "<model-viewer ";
             let src = 'src="' + route + slug + '.glb" ';
-            let iosSrc = 'ios-src="' + route + slug + '.glb" ';
+            let iosSrc = 'ios-src="' + route + slug + '.usdz" ';
             let description = 'description="Modelo 3D de' + name + '" ';
             let end = 'auto-rotate ar ar-modes="scene-viewer quick-look webxr" ar-scale="auto" camera-controls></model-viewer>';
             return start + src + iosSrc + description + end;
@@ -72,7 +72,7 @@
         let models = [
             {
                 name: "Alhambra",
-                slug: "alhambra/alhambra-v.1.0"
+                slug: "alhambra/alhambra-v.1.2"
             },
             {
                 name: "Atalaya Deifontes",
@@ -88,7 +88,7 @@
             },
             {
                 name: "Relieve Palacio Carlos V",
-                slug: "relieve-palacio-carlos-v/relieve-palacio-carlos-v-v.1.0"
+                slug: "relieve-palacio-carlos-v/relieve-palacio-carlos-v-v.1.2"
             },
             {
                 name: "San Vicente del Valle",
